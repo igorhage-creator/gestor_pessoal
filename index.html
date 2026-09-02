@@ -303,15 +303,13 @@ textarea{resize:vertical;min-height:56px}select option{background:var(--bg2)}
 <div class="toast" id="tst"></div>
 <script>
 // Firebase — Mood Mentoria
-// ⚠️ SUBSTITUA pelas credenciais do projeto Firebase do gestor-igor (finanças pessoais).
-// Copie esse bloco do seu index.html atual do gestor-igor.vercel.app e cole aqui no lugar do placeholder abaixo.
 firebase.initializeApp({
-  apiKey:"COLE_AQUI_A_API_KEY_DO_GESTOR_IGOR",
-  authDomain:"COLE_AQUI_O_AUTH_DOMAIN_DO_GESTOR_IGOR",
-  projectId:"COLE_AQUI_O_PROJECT_ID_DO_GESTOR_IGOR",
-  storageBucket:"COLE_AQUI_O_STORAGE_BUCKET_DO_GESTOR_IGOR",
-  messagingSenderId:"COLE_AQUI_O_MESSAGING_SENDER_ID_DO_GESTOR_IGOR",
-  appId:"COLE_AQUI_O_APP_ID_DO_GESTOR_IGOR"
+  apiKey:"AIzaSyCaIZh1HkuYh3lPKX5ugJFWLm7RY1M2ufY",
+  authDomain:"gestor-mood.firebaseapp.com",
+  projectId:"gestor-mood",
+  storageBucket:"gestor-mood.firebasestorage.app",
+  messagingSenderId:"851165695843",
+  appId:"1:851165695843:web:32468963ceea55f815cd56"
 });
 var db=firebase.firestore(), auth=firebase.auth();
 var D={tr:[],ta:[],la:[]}, charts={}, TV='lista', RP='sem', relCh=null;
@@ -329,8 +327,9 @@ function login(){
   if(!e||!s){err.textContent='Preencha e-mail e senha.';err.style.display='block';return;}
   btn.disabled=true;btn.textContent='Entrando...';err.style.display='none';
   auth.signInWithEmailAndPassword(e,s).catch(function(ex){
-    var m={'auth/invalid-credential':'E-mail ou senha incorretos.','auth/too-many-requests':'Muitas tentativas.'};
-    err.textContent=m[ex.code]||'Erro ao entrar.';err.style.display='block';btn.disabled=false;btn.textContent='Entrar';
+    var m={'auth/invalid-credential':'E-mail ou senha incorretos.','auth/too-many-requests':'Muitas tentativas.','auth/user-not-found':'Este e-mail não está cadastrado neste projeto Firebase.','auth/invalid-api-key':'Chave de API do Firebase inválida — confira o firebase.initializeApp.','auth/unauthorized-domain':'Domínio não autorizado no Firebase (Authentication > Settings > Authorized domains).','auth/configuration-not-found':'Login por e-mail/senha não está ativado neste projeto Firebase (Authentication > Sign-in method).'};
+    err.textContent=m[ex.code]||('Erro ao entrar ('+ex.code+'). Veja o console (F12) para detalhes.');err.style.display='block';btn.disabled=false;btn.textContent='Entrar';
+    console.error('Erro de login Firebase:',ex);
   });
 }
 function logout(){auth.signOut();D={tr:[],ta:[],la:[]};}
