@@ -303,15 +303,14 @@ textarea{resize:vertical;min-height:56px}select option{background:var(--bg2)}
 <div class="toast" id="tst"></div>
 <script>
 // Firebase — Gestor Financeiro Pessoal
-// ⚠️ SUBSTITUA pelas credenciais do projeto Firebase do gestor-igor (finanças pessoais).
-// Copie esse bloco do seu index.html atual do gestor-igor.vercel.app e cole aqui no lugar do placeholder abaixo.
+// Firebase — projeto próprio "gestor-pessoal-8bae3" (separado do gestor-mood)
 firebase.initializeApp({
-  apiKey:"COLE_AQUI_A_API_KEY_DO_GESTOR_IGOR",
-  authDomain:"COLE_AQUI_O_AUTH_DOMAIN_DO_GESTOR_IGOR",
-  projectId:"COLE_AQUI_O_PROJECT_ID_DO_GESTOR_IGOR",
-  storageBucket:"COLE_AQUI_O_STORAGE_BUCKET_DO_GESTOR_IGOR",
-  messagingSenderId:"COLE_AQUI_O_MESSAGING_SENDER_ID_DO_GESTOR_IGOR",
-  appId:"COLE_AQUI_O_APP_ID_DO_GESTOR_IGOR"
+  apiKey:"AIzaSyBoLD9Ug5oXP-yzPiFU07hkkhUBOGBl-u4",
+  authDomain:"gestor-pessoal-8bae3.firebaseapp.com",
+  projectId:"gestor-pessoal-8bae3",
+  storageBucket:"gestor-pessoal-8bae3.firebasestorage.app",
+  messagingSenderId:"1088008975966",
+  appId:"1:1088008975966:web:95f7dc5b2dc3d4ea2026cf"
 });
 var db=firebase.firestore(), auth=firebase.auth();
 var D={tr:[],ta:[],la:[]}, charts={}, TV='lista', RP='sem', relCh=null;
